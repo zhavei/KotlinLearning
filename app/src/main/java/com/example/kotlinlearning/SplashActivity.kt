@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +18,8 @@ class SplashActivity : AppCompatActivity() {
         val rollButton: Button = findViewById(R.id.Mbutton)
         rollButton.setOnClickListener {
             rollDice()
-            Toast.makeText(this, "diceRoll", Toast.LENGTH_SHORT).show()
-        }
+            Toast.makeText(this, "diceRoll", Toast.LENGTH_SHORT).show() }
+        rollDice()
     }
 
     /**
@@ -27,8 +28,17 @@ class SplashActivity : AppCompatActivity() {
     private fun rollDice() {
         val dice = Dice(6)
         val diceRoll = dice.roll()
-        val resultTextView: TextView = findViewById(R.id.tvText)
-        resultTextView.text = diceRoll.toString()
+        val diceImage: ImageView = findViewById(R.id.imageView1)
+        val drawableResource = when (diceRoll) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+        diceImage.setImageResource(drawableResource)
+        diceImage.contentDescription = diceRoll.toString()
     }
 
     fun hidetoolbar() {
