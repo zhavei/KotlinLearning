@@ -2,12 +2,14 @@ package com.example.kotlinlearning
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+
+private const val TAG = "MainActivity"
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,8 +20,11 @@ class SplashActivity : AppCompatActivity() {
         val rollButton: Button = findViewById(R.id.Mbutton)
         rollButton.setOnClickListener {
             rollDice()
+            Log.d(TAG, "just make sure its rollerd")
             Toast.makeText(this, "diceRoll", Toast.LENGTH_SHORT).show() }
+
         rollDice()
+        Log.v(TAG, "testing rolling dice")
     }
 
     /**
