@@ -1,5 +1,7 @@
 package com.example.kotlinlearning
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +20,11 @@ class SplashActivity : AppCompatActivity() {
         hidetoolbar()
 
         val rollButton: Button = findViewById(R.id.Mbutton)
+        val intentBut: Button = findViewById(R.id.buttonToIntent)
+        intentBut.setOnClickListener {
+            val intent = Intent (this, CalculatorTips::class.java)
+            startActivity(intent)
+        }
         rollButton.setOnClickListener {
             rollDice()
             Log.d(TAG, "just make sure its rollerd")
