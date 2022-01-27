@@ -1,31 +1,31 @@
 package com.example.kotlinlearning
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlinlearning.databinding.ActivityMainBinding
 
 private const val TAG = "MainActivity"
 
 class SplashActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         hidetoolbar()
 
-        val rollButton: Button = findViewById(R.id.Mbutton)
-        val intentBut: Button = findViewById(R.id.buttonToIntent)
-        intentBut.setOnClickListener {
+        binding.buttonToIntent.setOnClickListener {
             val intent = Intent (this, CalculatorTips::class.java)
             startActivity(intent)
         }
-        rollButton.setOnClickListener {
+        binding.Mbutton.setOnClickListener {
             rollDice()
             Log.d(TAG, "just make sure its rollerd")
             Toast.makeText(this, "diceRoll", Toast.LENGTH_SHORT).show() }
@@ -40,7 +40,7 @@ class SplashActivity : AppCompatActivity() {
     private fun rollDice() {
         val dice = Dice(6)
         val diceRoll = dice.roll()
-        val diceImage: ImageView = findViewById(R.id.imageView1)
+        val diceImage: ImageView = binding.imageView1
         val drawableResource = when (diceRoll) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
