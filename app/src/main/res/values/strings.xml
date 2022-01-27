@@ -7,5 +7,5 @@
     <string name="cost_of_service">Cost Of Service</string>
     <string name="how_was_service">How Was Service</string>
     <string name="calculate">Calculate</string>
-    <string name="tip_amount">Tip Amount</string>
+    <string name="tip_amount">Tip Amount: %s</string>
 </resources>
