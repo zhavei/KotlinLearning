@@ -14,7 +14,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.regex.Pattern.matches as matches1
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -36,14 +35,49 @@ class CalculatorTest{
     val activity = ActivityScenarioRule(CalculatorTips::class.java)
 
     @Test
-    fun calculate_20_percent_tip(){
+    fun calculate_20_percent_tip() {
         onView(withId(R.id.cost_of_service_editText))
-            .perform(typeText("50.00"))
-
+            .perform(typeText("50"))
         onView(withId(R.id.mButtonTwo)).perform(click())
-
         onView(withId(R.id.tip_result))
             .check(matches(withText(containsString("10.00"))))
+    }
 
+    @Test
+    fun calculate_18_percent_tip() {
+        onView(withId(R.id.cost_of_service_editText))
+            .perform(typeText("50.00"))
+        onView(withId(R.id.option_eighty_percent))
+            .perform(click())
+        onView(withId(R.id.mButtonTwo))
+            .perform(click())
+        onView(withId(R.id.tip_result))
+            .check(matches(withText(containsString("$9.00"))))
+    }
+
+    @Test
+    fun calculate_15_percent_tip_round_up() {
+        onView(withId(R.id.cost_of_service_editText))
+            .perform(typeText("50.00"))
+        onView(withId(R.id.option_fifteen_percent))
+            .perform(click())
+        onView(withId(R.id.mButtonTwo))
+            .perform(click())
+        onView(withId(R.id.tip_result))
+            .check(matches(withText(containsString("$8.00"))))
+    }
+
+    @Test
+    fun calculate_15_percent_tip_no_rounding() {
+        onView(withId(R.id.cost_of_service_editText))
+            .perform(typeText("50.00"))
+        onView(withId(R.id.option_fifteen_percent))
+            .perform(click())
+        onView(withId(R.id.round_swicth))
+            .perform(click())
+        onView(withId(R.id.mButtonTwo))
+            .perform(click())
+        onView(withId(R.id.tip_result))
+            .check(matches(withText(containsString("$7.50"))))
     }
 }
