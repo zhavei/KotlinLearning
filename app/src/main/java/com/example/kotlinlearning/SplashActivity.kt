@@ -30,6 +30,11 @@ class SplashActivity : AppCompatActivity() {
             Log.d(TAG, "just make sure its rollerd")
             Toast.makeText(this, "diceRoll", Toast.LENGTH_SHORT).show() }
 
+        binding.buttonToAffirmation.setOnClickListener {
+            val intentAif = Intent(this, Affirmations::class.java)
+            startActivity(intentAif)
+        }
+
         rollDice()
         Log.v(TAG, "testing rolling dice")
     }
@@ -65,5 +70,5 @@ class SplashActivity : AppCompatActivity() {
             return (1..numDice).random()
         }
     }
-
+    
 }

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinLearning">
-        <activity android:name=".CalculatorTips"></activity>
+        <activity android:name=".Affirmations"></activity>
+        <activity android:name=".CalculatorTips" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
