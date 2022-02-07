@@ -1,7 +1,9 @@
 package com.example.kotlinlearning
 
+import android.content.Context
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.mockito.Mockito.mock
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -18,6 +20,8 @@ class ExampleUnitTest {
         val rollResult = dice.roll()
         assertTrue("the value should was not betwen 1 and 6", rollResult in 1..6)
     }
+
+
 }
 
 
